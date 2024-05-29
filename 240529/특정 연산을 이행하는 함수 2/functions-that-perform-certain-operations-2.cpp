@@ -11,9 +11,9 @@ int main() {
         num[i].second=i;
     }
     sort(num.begin(),num.end());
-    num[0].first = int(num[0].first)+1;
+    num[0].first = int(num[0].first);
     num[1].first = round(num[1].first);
-    num[2].first = int(num[2].first);
+    num[2].first = int(num[2].first)+1;
     sort(num.begin(),num.end(), [](pair<double,int> &a,pair<double,int> &b){return a.second < b.second;});
     cout << num[0].first <<" "<< num[1].first<<" "<<num[2].first;
     return 0;
