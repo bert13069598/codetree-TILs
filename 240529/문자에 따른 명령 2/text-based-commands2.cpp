@@ -11,11 +11,11 @@ int main() {
         if(s=='L'){
             dir--;
             if(dir<0)
-                dir==3;
+                dir=3;
         }else if(s=='R'){
             dir++;
             if(dir>3)
-                dir==0;
+                dir=0;
         }else if(s=='F'){
             x+=dx[dir];
             y+=dy[dir];
