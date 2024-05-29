@@ -2,6 +2,8 @@
 
 using namespace std;
 int main() {
-    cout << "26 * 5 = 130";
+    int a=26;
+    int b=5;
+    cout << a <<" * "<<b<<" = "<<a*b;
     return 0;
 }
