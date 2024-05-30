@@ -8,13 +8,13 @@ int main() {
         cin>>map[i];
     int dxy[4]={1,n,-1,-n};
     int answer=0;
-    for(int i=0;i<n*n;i++){
+    for(int now=0;now<n*n;now++){
         int side = 0;
         for(int j=0;j<4;j++){
-            int next = i+dxy[i];
+            int next = now+dxy[now];
             if(next<0||next>=n*n)
                 continue;
-            if(abs(dxy[i])==1 && i/n != next/n)
+            if(abs(dxy[j])==1 && now/n != next/n)
                 continue;
             if(map[next]==1)
                 side++;
