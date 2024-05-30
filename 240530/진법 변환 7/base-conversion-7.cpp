@@ -13,6 +13,8 @@ int main() {
             bin.push_back('0');
         else
             bin.push_back('1');
+        if(a==1)
+            break;
         a/=2;
         if(a==1){
             bin.push_back('1');
