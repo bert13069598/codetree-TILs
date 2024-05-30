@@ -17,6 +17,10 @@ int main() {
         if(s=='R')
             reverse=!reverse;
         if(s=='D'){
+            if(arr.empty()){
+                cout << "error";
+                return;
+            }
             if(!reverse){
                 arr.pop_front();
             }else{
