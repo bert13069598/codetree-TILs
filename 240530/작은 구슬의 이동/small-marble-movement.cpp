@@ -19,7 +19,7 @@ int main() {
         dir=2;
     while(t--){
         now+=dxy[dir];
-        if(now%n==0 || now%n==n-1){
+        if(now%n==0 || now%n==n-1 || now/n==0 || now/n==n-1){
             t--;
             dir+=2;
             dir%=4;
