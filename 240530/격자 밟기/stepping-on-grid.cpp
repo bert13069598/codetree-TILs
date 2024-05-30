@@ -13,15 +13,20 @@ void dfs(int a,int b,vector<int> &map){
             continue;
         if(!map[na]){
             map[na]=map[a]+1;
-            if(map[na]+map[b]==25-K){
-            // for(int i=0;i<25;i++){
-            //     cout << map[i] << " ";
-            //     if(i%5==5-1)
-            //         cout<<"\n";
-            // }cout <<"\n";
+
+            if(map[na]+map[b]==25-K && ((abs(na-b)==1 && na/5==b/5) || abs(na-b)==5)){
+                // if(abs(na-b)==1 && na/5!=b/5)
+                //     continue;
+
+                // for(int i=0;i<25;i++){
+                //     cout << map[i] << "\t";
+                //     if(i%5==5-1)
+                //         cout<<"\n";
+                // }cout <<"\n";
+
                 answer++;
-                return;
             }
+            
             for(int j=0;j<4;j++){
                 int nb=b+dxy[j];
                 if(nb<0||nb>=25)
