@@ -6,9 +6,10 @@ int main() {
     long x[n],a[n];
     for(int i=0;i<n;i++)
         cin>>x[i]>>a[i];
-    int answer,tmp=1e10;
+    int answer
+    long tmp=1e10;
     for(int i=0;i<n;i++){
-        int sum=0;
+        long sum=0;
         for(int j=0;j<n;j++)
             sum+=abs(x[i]-x[j])*a[j];
         if(sum<tmp){
