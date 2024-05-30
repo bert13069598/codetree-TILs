@@ -6,8 +6,7 @@ int main() {
     long x[n],a[n];
     for(int i=0;i<n;i++)
         cin>>x[i]>>a[i];
-    int answer;
-    long tmp=1e10;
+    long answer,tmp=1e10;
     for(int i=0;i<n;i++){
         long sum=0;
         for(int j=0;j<n;j++)
