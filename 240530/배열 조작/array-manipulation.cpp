@@ -19,7 +19,7 @@ int main() {
         if(s=='D'){
             if(arr.empty()){
                 cout << "error";
-                return;
+                return 0;
             }
             if(!reverse){
                 arr.pop_front();
