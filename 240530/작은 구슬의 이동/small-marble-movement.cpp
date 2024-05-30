@@ -18,13 +18,14 @@ int main() {
     else
         dir=2;
     while(t--){
-        now+=dxy[dir];
-        if(now%n==0 || now%n==n-1 || now/n==0 || now/n==n-1){
-            t--;
+        int next = now + dxy[dir];
+        if(next <0 || next>=n*n || (abs(dxy[dir])==1 && now/n!=next/n)){
             dir+=2;
             dir%=4;
-        }
+        }else
+            now=next;
     }
+
     cout << now/n+1 << " " << now%n+1;
     return 0;
 }
