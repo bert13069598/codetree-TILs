@@ -9,10 +9,10 @@ int main() {
     double b = num-a;
     vector<char> bin;
     while(true){
-        if(!a%2)
-            bin.push_back('1');
-        else
+        if(a%2==0)
             bin.push_back('0');
+        else
+            bin.push_back('1');
         a/=2;
         if(a==1){
             bin.push_back('1');
