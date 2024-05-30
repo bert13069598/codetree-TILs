@@ -11,7 +11,7 @@ int main() {
     for(int now=0;now<n*n;now++){
         int side = 0;
         for(int j=0;j<4;j++){
-            int next = now+dxy[now];
+            int next = now+dxy[j];
             if(next<0||next>=n*n)
                 continue;
             if(abs(dxy[j])==1 && now/n != next/n)
