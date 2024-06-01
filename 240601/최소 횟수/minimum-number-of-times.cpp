@@ -8,34 +8,34 @@ using namespace std;
 int main() {
     int a,b;
     cin>>a>>b;
-    deque<pair<int,int>> q;
-    vector<bool> visit(MAX*2);
-    q.emplace_back(a,0);
-    visit[a]=true;
-    while(!q.empty()){
-        pair now = q.front();
-        if(now.first==b){
-            cout << now.second;
+    deque<int> q;
+    vector<int> visit(MAX);
+    q.emplace_back(a);
+    visit[a]=1;
+    while(!q.empty()){ 
+        int now = q.front();
+        if(now==b){
+            cout << visit[now]-1;
             break;
         }
-        // cout << now.first <<"\n";
+        // cout << now <<"\n";
         q.pop_front();
-        if(now.first<b){
-            if(!visit[now.first+1]){
-                visit[now.first+1]=true;
-                q.emplace_back(now.first+1,now.second+1);
+        if(now<b){
+            if(!visit[now+1] || visit[now]<visit[now+1]){
+                visit[now+1]=visit[now]+1;
+                q.emplace_back(now+1);
             }
         }
-        if(now.first>0){
-            if(!visit[now.first-1]){
-                visit[now.first-1]=true;
-                q.emplace_back(now.first-1,now.second+1);
+        if(now>0){
+            if(!visit[now-1] || visit[now]<visit[now-1]){
+                visit[now-1]=visit[now]+1;
+                q.emplace_back(now-1);
             }
         }
-        if(now.first<b){
-            if(!visit[now.first*2]){
-                visit[now.first*2]=true;
-                q.emplace_back(now.first*2,now.second);
+        if(now<b && now*2<MAX){
+            if(!visit[now*2]|| visit[now]<visit[now*2]){
+                visit[now*2]=visit[now];
+                q.emplace_back(now*2);
             }
         }
     }
