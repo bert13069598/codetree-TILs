@@ -6,12 +6,12 @@ int answer = 0;
 int ops[3] = {0, 1, 2};
 
 void dfs(int n, int now, int op, vector<int> &map, vector<int> &visit) {
-    for (int i = 0; i < n * n; i++) {
-        cout << visit[i] << " ";
-        if (i % n == n - 1)
-            cout << "\n";
-    }
-    cout << "\n";
+//    for (int i = 0; i < n * n; i++) {
+//        cout << visit[i] << " ";
+//        if (i % n == n - 1)
+//            cout << "\n";
+//    }
+//    cout << "\n";
 
     if (n * n - 1 == now) {
         if (answer < visit[now])
