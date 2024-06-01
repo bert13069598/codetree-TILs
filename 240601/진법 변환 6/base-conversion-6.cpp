@@ -7,8 +7,15 @@ int main() {
     string n;
     cin>>a>>n>>b;
     int num=0;
-    for(int i=0;i<n.size();i++)
-        num += pow(a,i)*(n[n.size()-1-i] - '0');
+    for(int i=0;i<n.size();i++){
+        int k = n[n.size()-1-i];
+        if(k>10)
+            k = k - 'W';
+        else
+            k = k - '0';
+        num += pow(a,i)*k;
+    }
+        
     stack<char> st;
     while(true){
         char s;
