@@ -9,7 +9,7 @@ int main() {
     int num=0;
     for(int i=0;i<n.size();i++){
         int k;
-        if(n[n.size()-1-i] - '0'> 10)   
+        if(n[n.size()-1-i] - '0'>=10)   
             k=n[n.size()-1-i] - 'W';
         else
             k=n[n.size()-1-i] - '0';
@@ -19,7 +19,7 @@ int main() {
     stack<char> st;
     while(true){
         char s;
-        if(num%b>10)
+        if(num%b>=10)
             s = num%b+'W';
         else
             s = num%b+'0';
