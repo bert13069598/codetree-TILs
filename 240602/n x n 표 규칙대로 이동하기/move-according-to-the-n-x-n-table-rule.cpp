@@ -24,7 +24,7 @@ void dfs(int n, int now, int op, vector<int> &map, vector<int> &visit) {
             continue;
         if (dxy == 1 && now / n != next / n)
             continue;
-        if (visit[next] <= visit[now]) {
+        if (visit[next] < visit[now]) {
             if (map[next] == ops[op]) {
                 visit[next] = visit[now] + 1;
                 dfs(n, next, (op + 1) % 3, map, visit);
