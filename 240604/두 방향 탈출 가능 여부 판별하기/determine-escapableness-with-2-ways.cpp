@@ -1,31 +1,30 @@
 #include <iostream>
 using namespace std;
 bool goal=false;
-void dfs(int n,int now, int*map){
-    if(now==n*n-1){
+void dfs(int n,int m,int now, int*map){
+    if(now==n*m-1)
         goal=true;
-    }
-    int dxy[4]={1,-1,n,-n};
-    for(int i=0;i<4;i++){
-        int next =now=dxy[i];
-        if(next<0||next>=n)
+    int dxy[2]={1,m};
+    for(int i=0;i<2;i++){
+        int next =now+dxy[i];
+        if(next>=n*m)
             continue;
-        if(abs(dxy[i])==1&&next/n!=now/n)
+        if(dxy[i]==1&&next/m!=now/m)
             continue;
-        if(!map[next]){
-            map[next]=1;
-            dfs(n,next,map);
+        if(map[next]==1){
+            map[next]=0;
+            dfs(n,m,next,map);
         }
     }
 }
 int main() {
     int n,m;
     cin>>n>>m;
-    int map[n*n];
-    for(int i=0;i<n*n;i++)
+    int map[n*m];
+    for(int i=0;i<n*m;i++)
         cin>>map[i];
-    map[0]=1;
-    dfs(n,0,map);
+    map[0]=0;
+    dfs(n,m,0,map);
     cout << goal;
     return 0;
 }
