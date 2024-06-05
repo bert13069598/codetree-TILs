@@ -9,7 +9,7 @@ int main() {
         cin>>map[i/n][i%n];
         sub[i/n][i%n]=map[i/n][i%n];
     }
-    int answer=0;
+    int answer=map[0][0];
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
             if(j<n-1){
