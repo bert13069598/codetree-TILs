@@ -24,6 +24,6 @@ int main() {
             }
         }
     }
-    cout<<map[n-1][1];
+    cout<<map[n-1][0];
     return 0;
 }
