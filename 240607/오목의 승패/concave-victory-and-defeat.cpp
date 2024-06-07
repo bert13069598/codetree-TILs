@@ -1,15 +1,12 @@
 #include <iostream>
 using namespace std;
 
-bool win=false;
-bool nowin=true;
+bool win;
 void dfs2(int n, int now, int *map,int team,int i,int d){
-    if(d==5){
+    if(d==5)
         win=true;
-        nowin=false;
-    }
-    else if(d>5)
-        nowin=true;
+    else
+        win=false;
     int dxy[8]={1,-1,n,-n,n+1,n-1,-n+1,-n-1};
     int next=now+dxy[i];
     if(next<0||next>=n*n)
@@ -52,12 +49,11 @@ int main() {
     for(int i=0;i<n*n;i++){
         if(map[i]==1 || map[i]==2){
             win=false;
-            nowin=true;
             team=map[i];
             xy={i/n+1,i%n+1};
 
             dfs(n,i,map,team);
-            if(win && !nowin){
+            if(win){
                 if(team==1)
                     cout << 1 << "\n";
                 else if(team==2)
