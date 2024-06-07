@@ -1,9 +1,12 @@
 #include <iostream>
 using namespace std;
 
-int sum=1;
-
-void dfs2(int n, int now, int *map,int team,int i){
+bool win=false;
+void dfs2(int n, int now, int *map,int team,int i,int d){
+    if(d==5)
+        win=true;
+    else if(d>5)
+        win=false;
     int dxy[8]={1,-1,n,-n,n+1,n-1,-n+1,-n-1};
     int next=now+dxy[i];
     if(next<0||next>=n*n)
@@ -11,8 +14,7 @@ void dfs2(int n, int now, int *map,int team,int i){
     if(abs(dxy[i])==1&&now/n!=next/n)
         return;
     if(map[next]==team){
-        sum++;
-        dfs2(n,next,map,team,i);
+        dfs2(n,next,map,team,i,d+1);
     }
 }
 
@@ -25,8 +27,7 @@ void dfs(int n,int now, int *map,int team){
         if(abs(dxy[i])==1&&now/n!=next/n)
             continue;
         if(map[next]==team){
-            sum++;
-            dfs2(n,next,map,team,i);
+            dfs2(n,next,map,team,i,2);
         }
     }
 }
@@ -50,9 +51,8 @@ int main() {
             team=map[i];
             xy={i/n+1,i%n+1};
 
-            sum=1;
             dfs(n,i,map,team);
-            if(sum==5){
+            if(win){
                 if(team==1)
                     cout << 1 << "\n";
                 else if(team==2)
