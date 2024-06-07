@@ -35,9 +35,16 @@ void dfs(int n,int now, int *map,int team){
 
 int main() {
     int n=19;
+    int map_[n*n];
     int map[n*n];
     for(int i=0;i<n*n;i++)
-        cin>>map[i];
+        cin>>map_[i];
+    
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++)
+            map[j*n+i]=map_[i*n+j];
+    }
+
     int team = 0;
     pair<int,int> xy;
     for(int i=0;i<n*n;i++){
@@ -53,7 +60,7 @@ int main() {
                     cout << 1 << "\n";
                 else if(team==2)
                     cout << 2 << "\n";
-                cout << xy.first << " " << xy.second;
+                cout << xy.second << " " << xy.first;
                 return 0;
             }
         }
