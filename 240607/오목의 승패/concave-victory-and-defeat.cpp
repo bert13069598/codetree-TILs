@@ -47,7 +47,7 @@ int main() {
     int team = 0;
     pair<int,int> xy;
     for(int i=0;i<n*n;i++){
-        if(map[i]){
+        if(map[i]==1 || map[i]==2){
             win=false;
             team=map[i];
             xy={i/n+1,i%n+1};
@@ -63,6 +63,6 @@ int main() {
             }
         }
     }
-    cout << 0;
+    cout << 0 << "\n";;
     return 0;
 }
