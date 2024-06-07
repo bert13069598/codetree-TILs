@@ -48,6 +48,7 @@ int main() {
     pair<int,int> xy;
     for(int i=0;i<n*n;i++){
         if(map[i]){
+            win=false;
             team=map[i];
             xy={i/n+1,i%n+1};
 
