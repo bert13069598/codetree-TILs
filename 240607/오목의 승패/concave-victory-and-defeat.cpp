@@ -12,7 +12,6 @@ void dfs2(int n, int now, int *map,int team,int i){
         return;
     if(map[next]==team){
         sum++;
-        map[next]=0;
         dfs2(n,next,map,team,i);
     }
 }
@@ -27,7 +26,6 @@ void dfs(int n,int now, int *map,int team){
             continue;
         if(map[next]==team){
             sum++;
-            map[next]=0;
             dfs2(n,next,map,team,i);
         }
     }
@@ -52,7 +50,6 @@ int main() {
             team=map[i];
             xy={i/n+1,i%n+1};
 
-            map[i]=0;
             sum=1;
             dfs(n,i,map,team);
             if(sum==5){
