@@ -13,8 +13,8 @@ int main() {
     int answer=0;
     for(auto a:arr){
         if(m[k-a]){
-            answer++;
-            m[a]=0;
+            m[a]--;
+            answer+=m[k-a];
         }
     }
     cout<<answer;
