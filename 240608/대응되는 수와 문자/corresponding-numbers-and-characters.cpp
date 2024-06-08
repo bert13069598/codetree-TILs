@@ -15,7 +15,7 @@ int main() {
     for(int i=0;i<m;i++){
         cin>>s;
         if(isdigit(s[0]))
-            cout<<m2[s[0]-'0']<<"\n";
+            cout<<m2[stoi(s)]<<"\n";
         else
             cout<<m1[s]<<"\n";
     }
