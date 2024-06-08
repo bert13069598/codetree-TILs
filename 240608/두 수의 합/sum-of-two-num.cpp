@@ -14,7 +14,7 @@ int main() {
     for(auto a:arr){
         if(m[k-a]){
             answer++;
-            m[a]--;
+            m[a]=0;
         }
     }
     cout<<answer;
