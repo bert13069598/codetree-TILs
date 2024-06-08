@@ -3,6 +3,7 @@
 using namespace std;
 int main() {
     int n;
+    cin>>n;
     unordered_map<int,int> m;
     for(int i=0;i<n;i++){
         string s;
@@ -17,7 +18,7 @@ int main() {
             if(m.find(k)!=m.end())
                 cout<<m[k]<<"\n";
             else
-                cout<<"None";
+                cout<<"None"<<"\n";
         }else if(s=="remove"){
             cin>>k;            
             m.erase(k);
