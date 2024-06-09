@@ -22,7 +22,7 @@ int main() {
     vector<vector<int>> map(n,vector<int>(n));
     for(int i=0;i<n;i++)
         for(int j=0;j<n;j++)
-            cin>>map[i][j];
+            cin>>map[j][i];
     
     int team;
     pair<int,int> xy;
@@ -43,7 +43,7 @@ int main() {
                         int d = dfs(n,nx,ny,map,k);
                         if(d==5){
                             cout << team << "\n";
-                            cout << xy.first + 1 << " " << xy.second + 1;
+                            cout << xy.second + 1 << " " << xy.first + 1;
                             return 0;
                         }
                     }
