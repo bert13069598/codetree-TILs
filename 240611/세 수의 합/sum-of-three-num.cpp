@@ -11,15 +11,15 @@ int main() {
         m[arr[i]]++;
     }
     int answer=0;
-    for(int i=0;i<n-2;i++){
+    for(int i=0;i<n-1;i++){
         m[arr[i]]--;
-        for(int j=i+1;j<n-1;j++){
-            m[arr[j]]--;
+        for(int j=0;j<i;j++){
+            // cout << i << " " << j << " ";
             // cout << arr[i] << " " << arr[j] << " " << k-arr[i]-arr[j] << " " << m[k-arr[i]-arr[j]]<< "\n";
-            answer+=m[k-arr[i]-arr[j]];
+            if(m[k - arr[i] - arr[j]]){
+                answer+=m[k-arr[i]-arr[j]];
+            }
         }
-        for(int j=i+1;j<n-1;j++)
-            m[arr[j]]++;
     }
     cout<<answer;
     return 0;
