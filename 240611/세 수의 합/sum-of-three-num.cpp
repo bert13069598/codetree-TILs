@@ -14,12 +14,12 @@ int main() {
     for(int i=0;i<n-2;i++){
         m[arr[i]]--;
         for(int j=i+1;j<n-1;j++){
-            if(m[k-arr[i]-arr[j]]){
-                m[arr[j]]--;
-                // cout << arr[i] << " " << arr[j] << " " << k-arr[i]-arr[j] << " " << m[k-arr[i]-arr[j]]<< "\n";
-                answer+=m[k-arr[i]-arr[j]];
-            }
+            m[arr[j]]--;
+            // cout << arr[i] << " " << arr[j] << " " << k-arr[i]-arr[j] << " " << m[k-arr[i]-arr[j]]<< "\n";
+            answer+=m[k-arr[i]-arr[j]];
         }
+        for(int j=i+1;j<n-1;j++)
+            m[arr[j]]++;
     }
     cout<<answer;
     return 0;
