@@ -5,14 +5,13 @@ using namespace std;
 int main() {
     int n;
     cin>>n;
-    vector<pair<int,int>> map(n*n);
+    vector<int> map(n*n);
     vector<pair<int,int>> sortmap(n*n);
     vector<int> dp(n*n,1);
     for(int i=0;i<n*n;i++){
         int num;
-        cin>>num;
-        map[i]={num,i};
-        sortmap[i]=map[i];
+        cin>>map[i];
+        sortmap[i]={map[i],i};
     }
     int dxy[4]={1,-1,n,-n};
     int ans=0;
