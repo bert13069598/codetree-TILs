@@ -18,6 +18,9 @@ int main() {
         if(a-b)
             pq.push(a-b);
     }
-    cout<<pq.top();
+    if(!pq.empty())
+        cout<<pq.top();
+    else
+        cout<<-1;
     return 0;
 }
