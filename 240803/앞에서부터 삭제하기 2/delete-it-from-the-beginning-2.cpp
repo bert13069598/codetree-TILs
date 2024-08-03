@@ -9,16 +9,14 @@ int main() {
     for(int i=0;i<n;i++)
         cin>>N[i];
     float answer=0;
-    priority_queue<int> pq;
     for(int k=1;k<=n-2;k++){
-        for(int i=k;i<n;i++)
-            pq.push(-N[i]);
-        pq.pop();
+        priority_queue<int> pq;
         float sum=0;
-        while(!pq.empty()){
-            sum+=-pq.top();
-            pq.pop();
+        for(int i=k;i<n;i++){
+            pq.push(-N[i]);
+            sum+=N[i];
         }
+        sum-=-pq.top();
         answer=max(answer,sum/(n-k-1));
     }
     cout<<fixed;
