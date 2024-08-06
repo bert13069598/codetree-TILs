@@ -16,12 +16,13 @@ int main() {
             int mid=(left+right)/2;
             if(x[mid]==y){
                 cnt++;
-                if(x[mid+1]==y)
-                    left=mid+1;
-                else if(x[mid-1]==y)
-                    right=mid-1;
-                else
-                    break;
+                int tmp=mid+1;
+                while(x[tmp++]==y)
+                    cnt++;
+                tmp=mid-1;
+                while(x[tmp--]==y)
+                    cnt++;
+                break;
             }else if(x[mid]>y)
                 right=mid-1;
             else
