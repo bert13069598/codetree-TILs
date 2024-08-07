@@ -15,10 +15,12 @@ int main() {
     while(m>0){
         pair now = pq.top();
         pq.pop();
-        if(now.second>0){
-            m--;
-            answer+=now.first;
-            pq.emplace(now.first,now.second-1);
+        if(m>=now.second){
+            answer+=now.first*now.second;
+            m-=now.second;
+        }else{
+            answer+=now.first*m;
+            m=0;
         }
     }
     cout<<fixed;
