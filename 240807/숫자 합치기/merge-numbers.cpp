@@ -1,23 +1,24 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <queue>
 using namespace std;
 
 int main() {
-    int n;
+    int n,x;
     cin>>n;
-    vector<int> x(n);
-    for(int i=0;i<n;i++)
-        cin>>x[i];
-    int answer=1e8;
-    do{
-        int sum=0,tmp=x[0];
-        for(int i=1;i<x.size();i++){
-            tmp+=x[i];
-            sum+=tmp;
-        }
-        answer=min(answer,sum);
-    }while(next_permutation(x.begin(),x.end()));
-    cout<<answer;
+    priority_queue<int,vector<int>,greater<>> pq;
+    for(int i=0;i<n;i++){
+        cin>>x;
+        pq.push(x);
+    }
+    int sum=0;
+    while(pq.size()>1){
+        int a=pq.top();
+        pq.pop();
+        int b=pq.top();
+        pq.pop();
+        pq.push(a+b);
+        sum+=a+b;
+    }
+    cout<<sum;
     return 0;
 }
