@@ -11,17 +11,20 @@ int main() {
         pq.emplace(e,s);
     }
     int answer=0;
-    s=pq.top().first;
-    e=pq.top().second;
+    s=pq.top().second;
+    e=pq.top().first;
     pq.pop();
     int ns,ne;
     while(!pq.empty()){
-        ns=pq.top().first;
-        ne=pq.top().second;
+        ns=pq.top().second;
+        ne=pq.top().first;
         pq.pop();
-        if(ns>=e)
+        if(ns>=e){
             answer++;
+            s=ns;
+            e=ne;
+        }
     }
-    cout<<answer;
+    cout<<answer+1;
     return 0;
 }
