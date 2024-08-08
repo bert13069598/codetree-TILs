@@ -28,6 +28,9 @@ int main() {
             }
         }
     }
+    for(int i=1;i<=n;i++)
+        if(dist[i]==1e8)
+            dist[i]=-1;
     for(int i=2;i<=n;i++)
         cout<<dist[i]<<"\n";
     return 0;
