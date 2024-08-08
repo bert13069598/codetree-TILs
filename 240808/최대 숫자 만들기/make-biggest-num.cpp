@@ -4,16 +4,17 @@
 using namespace std;
 
 bool cmp(int a,int b){
-    if(stoi(to_string(a)+to_string(b))>stoi(to_string(b)+to_string(a)))
+    if(stol(to_string(a)+to_string(b))>stol(to_string(b)+to_string(a)))
         return true;
     else
         return false;
 }
 
 int main() {
-    int n,x;
+    int n;
+    long x;
     cin>>n;
-    vector<int> num;
+    vector<long> num;
     for(int i=0;i<n;i++){
         cin>>x;
         num.push_back(x);
