@@ -10,6 +10,10 @@ int main() {
     vector<map<int,int>> graph(n+1);
     for(int i=0;i<m;i++){
         cin>>s>>e>>w;
+        if(graph[s][e])
+            w=min(w,graph[s][e]);
+        if(graph[e][s])
+            w=min(w,graph[e][s]);
         graph[s][e]=w;
         graph[e][s]=w;
     }
@@ -27,7 +31,7 @@ int main() {
         for(auto &[key,value]:graph[node]){
             int ncost=value+cost;
             int nnode=key;
-            if(cost<visit[nnode]){
+            if(ncost<visit[nnode]){
                 visit[nnode]=ncost;
                 pq.emplace(ncost,nnode);
             }
