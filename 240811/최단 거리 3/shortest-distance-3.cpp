@@ -21,6 +21,8 @@ int main() {
     while(!pq.empty()){
         int cost=pq.top().first;
         int node=pq.top().second;
+        if(node==a)
+            break;
         pq.pop();
         for(auto &[key,value]:graph[node]){
             int ncost=value+cost;
