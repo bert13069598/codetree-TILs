@@ -25,17 +25,15 @@ int main() {
             }
             s[p] = c;
             p++;
-        } else if ( command == 'L' && p != 0) {
+        } else if ( command == 'L' && p > 0) {
             p--;
-        } else if ( command == 'R' && p != s.size()) {
+        } else if ( command == 'R' && p < s.size()) {
             p++;
-        } else if ( command == 'D') {
-            if (p != s.size()){
-                int p0 = p;
-                while(p0 < s.size() - 1){
-                    s[p0] = s[p0 + 1];
-                    p0++;
-                }
+        } else if ( command == 'D' && p < s.size()) {
+            int p0 = p;
+            while(p0 < s.size() - 1){
+                s[p0] = s[p0 + 1];
+                p0++;
             }
             s.resize(s.size() - 1);
         }
