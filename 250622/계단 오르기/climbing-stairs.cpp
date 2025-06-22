@@ -13,14 +13,12 @@ int dfs(int k){
 int main() {
     cin >> n;
     int answer=0;
-    for(int x=0;x<=n/2;x++){
-        for(int y=0;y<=n/3;y++){
-            if(2*x+3*y==n){
+    for(int x=0;x<=n/2;x++)
+        for(int y=0;y<=n/3;y++)
+            if(2*x+3*y==n)
                 answer+=dfs(x+y)/dfs(x)/dfs(y);
-            }
-        }
-    }  
-    cout<<answer;
+
+    cout<<answer%10007;
 
     return 0;
 }
