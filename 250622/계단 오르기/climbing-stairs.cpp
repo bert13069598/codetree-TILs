@@ -12,14 +12,11 @@ long dfs(int k){
 
 int main() {
     cin >> n;
-    int answer=0;
-    for(int x=0;x<=n/2;x++)
-        for(int y=0;y<=n/3;y++)
-            if(2*x+3*y==n){
-                answer+=dfs(x+y)/dfs(x)/dfs(y);
-            }
-
-    cout<<answer%10007;
+    int dp[1000]={0,0,1,1,1};
+    for(int i=5;i<=n;i++)
+        dp[i]=(dp[i-2]+dp[i-3])%10007;
+    
+    cout<<dp[n];
 
     return 0;
 }
