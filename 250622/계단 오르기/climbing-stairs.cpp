@@ -7,7 +7,7 @@ int n;
 int dfs(int k){
     if(k==0||k==1)
         return 1;
-    return k*dfs(k-1)%10007;
+    return k*dfs((k-1)%10007);
 }
 
 int main() {
@@ -18,7 +18,7 @@ int main() {
             if(2*x+3*y==n)
                 answer+=dfs(x+y)/dfs(x)/dfs(y);
 
-    cout<<answer%10007;
+    cout<<answer;
 
     return 0;
 }
