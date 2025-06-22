@@ -18,7 +18,7 @@ int main() {
             if(2*x+3*y==n)
                 answer+=dfs(x+y)/dfs(x)/dfs(y);
 
-    cout<<answer;
+    cout<<answer%10007;
 
     return 0;
 }
