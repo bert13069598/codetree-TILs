@@ -16,9 +16,9 @@ int main() {
     for(int x=0;x<=n/2;x++)
         for(int y=0;y<=n/3;y++)
             if(2*x+3*y==n)
-                answer+=dfs(x+y)/dfs(x)/dfs(y);
+                answer+=dfs(x+y)/dfs(x)/dfs(y)%10007;
 
-    cout<<answer%10007;
+    cout<<answer;
 
     return 0;
 }
