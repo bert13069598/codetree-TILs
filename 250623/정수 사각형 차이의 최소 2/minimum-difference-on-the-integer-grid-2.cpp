@@ -28,7 +28,7 @@ int main() {
             int dp1a=min(dp[i][j],dp1[i-1][j]);
             int dp0b=max(dp[i][j],dp0[i][j-1]);
             int dp1b=min(dp[i][j],dp1[i][j-1]);
-            if(dp0a-dp1a<dp0b-dp1b){
+            if(dp0a-dp1a<=dp0b-dp1b){
                 dp0[i][j]=dp0a;
                 dp1[i][j]=dp1a;
             }else{
@@ -37,7 +37,16 @@ int main() {
             }
         }
     }
-
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<n;j++){
+    //         cout<<dp0[i][j]<<" ";
+    //     }cout<<"\n";
+    // }
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<n;j++){
+    //         cout<<dp1[i][j]<<" ";
+    //     }cout<<"\n";
+    // }
     cout<<dp0[n-1][n-1]-dp1[n-1][n-1];
     return 0;
 }
