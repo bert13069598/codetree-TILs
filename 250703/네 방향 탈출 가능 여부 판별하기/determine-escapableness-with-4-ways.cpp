@@ -24,14 +24,14 @@ int main() {
     while(!q.empty()) {
         auto xy = q.front();
         q.pop();
-        if(xy==make_pair(n-1,n-1)){
+        if(xy==make_pair(n-1,m-1)){
             answer=true;
             break;
         }
         for(int i=0;i<4;i++){
             int nx=xy.first+dx[i];
             int ny=xy.second+dy[i];
-            if(nx<0||ny<0||nx>=n||ny>=n)
+            if(nx<0||ny<0||nx>=n||ny>=m)
                 continue;
             if(a[nx][ny]==1){
                 a[nx][ny]=0;
