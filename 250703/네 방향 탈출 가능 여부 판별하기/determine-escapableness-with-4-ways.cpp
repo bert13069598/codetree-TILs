@@ -31,7 +31,7 @@ int main() {
         for(int i=0;i<4;i++){
             int nx=xy.first+dx[i];
             int ny=xy.second+dy[i];
-            if(nx<0||ny<0||nx>=n||ny>=n)
+            if(nx<0||ny<0||nx>=n-1||ny>=n-1)
                 continue;
             if(a[nx][ny]){
                 a[nx][ny]=0;
