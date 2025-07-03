@@ -31,9 +31,9 @@ int main() {
         for(int i=0;i<4;i++){
             int nx=xy.first+dx[i];
             int ny=xy.second+dy[i];
-            if(nx<0||ny<0||nx>=n-1||ny>=n-1)
+            if(nx<0||ny<0||nx>=n||ny>=n)
                 continue;
-            if(a[nx][ny]){
+            if(a[nx][ny]==1){
                 a[nx][ny]=0;
                 q.push({nx,ny});
             }
