@@ -59,20 +59,14 @@ int dfs(int grid[100][100],int x,int y,int d) {
         // cout<<"\n";
         return bfs(grid,x,y);
     }
-    int dx[4]={0,1};
-    int dy[4]={1,0};
     int answer=0;
-    for(int i=0;i<2;i++){
-        int nx=x+dx[i];
-        int ny=y+dy[i];
-        if(nx<0||ny<0||nx>=n||ny>=n)
-            continue;
-        if(grid[nx][ny]){
-            grid[nx][ny]=0;
-            answer=max(answer,dfs(grid,nx,ny,d+1));
-            grid[nx][ny]=1;
-        }
-    }
+    for(int nx=x;nx<n;nx++)
+        for(int ny=y;ny<n;ny++)
+            if(grid[nx][ny]){
+                grid[nx][ny]=0;
+                answer=max(answer,dfs(grid,nx,ny,d+1));
+                grid[nx][ny]=1;
+            }
     return answer;
 }
 
