@@ -91,9 +91,13 @@ int main() {
     for(int i=0;i<n;i++)
         for(int j=0;j<n;j++)
             if(grid[i][j]){
-                grid[i][j]=0;
-                answer=max(answer,dfs(grid,i,j,1));
-                grid[i][j]=1;
+                if(m){
+                    grid[i][j]=0;
+                    answer=max(answer,dfs(grid,i,j,1));
+                    grid[i][j]=1;
+                }
+                else
+                    answer=max(answer,bfs(grid,i,j));
             }
     cout<<answer;
     return 0;
