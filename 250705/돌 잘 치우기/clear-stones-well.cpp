@@ -60,13 +60,16 @@ int dfs(int grid[100][100],int x,int y,int d) {
         return bfs(grid,x,y);
     }
     int answer=0;
-    for(int nx=x;nx<n;nx++)
-        for(int ny=y;ny<n;ny++)
+    for(int nx=0;nx<n;nx++)
+        for(int ny=0;ny<n;ny++){
+            if(nx*n+ny<x*n+y)
+                continue;
             if(grid[nx][ny]){
                 grid[nx][ny]=0;
                 answer=max(answer,dfs(grid,nx,ny,d+1));
                 grid[nx][ny]=1;
             }
+        }
     return answer;
 }
 
