@@ -9,9 +9,9 @@ int a[200][200];
 int dx[4]={0,1,0,-1};
 int dy[4]={1,0,-1,0};
 
-void find_water(int a[200][200],queue<pair<int,int>> &water){
+void find_water(int a[200][200],queue<pair<int,int>> &water,int i,int j){
     queue<pair<int,int>> q;
-    q.push(water.front());
+    q.push({i,j});
     while(!q.empty()){
         int x=q.front().first;
         int y=q.front().second;
@@ -48,6 +48,7 @@ void melt_ice(int a[200][200],queue<pair<int,int>> &water){
             if(a[nx][ny]==1){
                 a[nx][ny]=2;
                 water.push({nx,ny});
+                find_water(a,water,nx,ny);
             }
         }
     }
@@ -63,9 +64,8 @@ int main() {
     }
 
     queue<pair<int,int>> q;
-    q.push({0,0});
     a[0][0]=2;
-    find_water(a,q);
+    find_water(a,q,0,0);
     // for (int i=0;i<N;i++){
     //     for (int j=0;j<M;j++){
     //         cout<<a[i][j]<<" ";
