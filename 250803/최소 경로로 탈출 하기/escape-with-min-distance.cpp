@@ -21,16 +21,15 @@ int bfs(int x,int y){
         for(int i=0;i<4;i++){
             int nx=x+dx[i];
             int ny=y+dy[i];
+            if(nx<0||ny<0||nx>=n||ny>=m)
+                continue;
             if(grid[nx][ny]==1){
                 grid[nx][ny]=grid[x][y]+1;
                 q.push(make_pair(nx,ny));
             }
         }
     }
-    if(grid[n-1][m-1]==1)
-        return 0;
-    else
-        return grid[n-1][m-1];
+    return 0;
 }
 
 int main() {
@@ -45,3 +44,4 @@ int main() {
     cout<<bfs(0,0)-1;
     return 0;
 }
+
