@@ -27,7 +27,7 @@ int bfs(int x,int y){
             }
         }
     }
-    return -1;
+    return 0;
 }
 
 int main() {
