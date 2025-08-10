@@ -45,11 +45,11 @@ int main() {
             int ny=y+dy[i];
             if(nx<0||ny<0||nx>=n||ny>=n)
                 continue;
-            if((nx!=r1 && ny!=r2) && grid[nx][ny]==1 && k>0){
+            if(!(nx==r1 && ny==c1) && grid[nx][ny]==1 && k>0){
                 grid[nx][ny]=grid[x][y]+1;
                 q.push(make_tuple(k-1,nx,ny));
             }
-            if(grid[nx][ny]==0){
+            else if(grid[nx][ny]==0){
                 grid[nx][ny]=grid[x][y]+1;
                 q.push(make_tuple(k,nx,ny));
             }
