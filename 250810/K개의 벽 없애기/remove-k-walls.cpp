@@ -6,7 +6,6 @@ using namespace std;
 
 int n, k;
 int grid[100][100];
-int visit[100][100];
 int r1, c1, r2, c2;
 
 int main() {
@@ -15,7 +14,6 @@ int main() {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             cin >> grid[i][j];
-            visit[i][j]=grid[i][j];
         }
     }
 
@@ -30,15 +28,15 @@ int main() {
     int dx[4]={0,1,0,-1};
     int dy[4]={1,0,-1,0};
 
-    queue<tuple<int,int,int>> q;
-    q.push(make_tuple(r1,c1,k));
-    visit[r1][c1]=1;
+    priority_queue<tuple<int,int,int>> q;
+    q.push(make_tuple(k,r1,c1));
+    grid[r1][c1]=1;
     while(!q.empty()){
-        int x=get<0>(q.front());
-        int y=get<1>(q.front());
-        int k=get<2>(q.front());
+        int k=get<0>(q.top());
+        int x=get<1>(q.top());
+        int y=get<2>(q.top());
         if(x==r2 && y==c2){
-            cout<<visit[x][y]-1;
+            cout<<grid[x][y]-1;
             return 0;
         }
         q.pop();
@@ -47,17 +45,24 @@ int main() {
             int ny=y+dy[i];
             if(nx<0||ny<0||nx>=n||ny>=n)
                 continue;
-            if(visit[nx][ny]==1 && k>0){
-                k--;
-                visit[nx][ny]=0;
+            if(grid[nx][ny]==1 && k>0){
+                grid[nx][ny]=grid[x][y]+1;
+                q.push(make_tuple(k-1,nx,ny));
             }
-            if(visit[nx][ny]==0){
-                visit[nx][ny]=visit[x][y]+1;
-                q.push(make_tuple(nx,ny,k));
+            if(grid[nx][ny]==0){
+                grid[nx][ny]=grid[x][y]+1;
+                q.push(make_tuple(k,nx,ny));
             }
         }
+
+        // for(int i=0;i<n;i++){
+        //     for(int j=0;j<n;j++){
+        //         cout<<grid[i][j]<<" ";
+        //     }cout<<"\n";
+        // }cout<<"\n";
     }
     cout<<-1;
 
     return 0;
 }
+
