@@ -28,13 +28,13 @@ int main() {
     int dx[4]={0,1,0,-1};
     int dy[4]={1,0,-1,0};
 
-    queue<tuple<int,int,int>> q;
+    priority_queue<tuple<int,int,int>> q;
     q.push(make_tuple(k,r1,c1));
     grid[r1][c1]=1;
     while(!q.empty()){
-        int k=get<0>(q.front());
-        int x=get<1>(q.front());
-        int y=get<2>(q.front());
+        int k=get<0>(q.top());
+        int x=get<1>(q.top());
+        int y=get<2>(q.top());
         if(x==r2 && y==c2){
             cout<<grid[x][y]-1;
             return 0;
