@@ -9,9 +9,13 @@ int dx[4]={0,1,-1,0};
 int dy[4]={1,0,0,-1};
 
 int dfs(int k,int x,int y,int grid[20][20],int visit[20][20]){
-    if(k==0)
+    if(k==1){
+        visit[x][y]=k;
         return grid[x][y];
-    int sum=grid[x][y];
+    }
+    int sum=0;
+    if(!visit[x][y])
+        sum=grid[x][y];
     visit[x][y]=k;
     for(int i=0;i<4;i++){
         int nx=x+dx[i];
@@ -40,14 +44,16 @@ int main() {
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
                 int visit[20][20]{};
-                int sum=dfs(k,i,j,grid,visit);
-                if(k==2){
-                    for(int i=0;i<n;i++){
-                        for(int j=0;j<n;j++)
-                            cout<<visit[i][j]<<" ";
-                        cout<<"\n";
-                    }cout<<sum<<" "<<sum*m<<" "<<cost<<"\n";
-                }
+                int sum=dfs(k+1,i,j,grid,visit);
+                // if(sum==5){
+                // if(sum==3 && sum*m-cost>=0){
+                //     for(int i=0;i<n;i++){
+                //         for(int j=0;j<n;j++)
+                //             cout<<visit[i][j]<<" ";
+                //         cout<<"\n";
+                //     }
+                //     cout<<sum<<" "<<sum*m<<" "<<k<<" "<<cost<<"\n\n";
+                // }
                 if(sum*m-cost>=0)
                     answer=max(answer,sum);
             }
