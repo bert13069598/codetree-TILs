@@ -39,14 +39,13 @@ int main() {
     }
 
     int answer=0;
-    for(int k=0;k<n;k++){
+    for(int k=0;k<=n;k++){
         int cost=2*k*k+2*k+1;
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
                 int visit[20][20]{};
                 int sum=dfs(k+1,i,j,grid,visit);
-                // if(sum==5){
-                // if(sum==3 && sum*m-cost>=0){
+                // if(sum==35){
                 //     for(int i=0;i<n;i++){
                 //         for(int j=0;j<n;j++)
                 //             cout<<visit[i][j]<<" ";
