@@ -40,11 +40,15 @@ int main() {
                     int sum1=cumsum(i,j,i+h1,j+w1,visit1,1);
                     
                     int sum2=-25*1e3;
-                    for(int k=i;k<n;k++){
-                        for(int l=j;l<m;l++){
-                            if(!visit1[k][l]){
+                    for(int k=0;k<n;k++){
+                        for(int l=0;l<m;l++){
+                            if(k<=i && l<=j)
+                                continue;
+                            if(visit1[k][l]==0){
                                 for(int h2=1;h2<=n-k;h2++){
                                     for(int w2=1;w2<=m-l;w2++){
+                                        if((k<i && k+h2>i) || (l<j && l+w2>j))
+                                            continue;
                                         int visit2[5][5]{};
                                         int sum=cumsum(k,l,k+h2,l+w2,visit2,2);
                                         sum2=max(sum2,sum);
@@ -60,13 +64,6 @@ int main() {
                             }
                         }
                     }
-                    // for(int t1=0;t1<n;t1++){
-                    //     for(int t2=0;t2<m;t2++)
-                    //         cout<<visit1[t1][t2]<<" ";
-                    //     cout<<"\n";
-                    // };
-                    // cout<<"\n";
-
                     answer=max(answer,sum1+sum2);
                 }
             }
@@ -77,3 +74,4 @@ int main() {
 
     return 0;
 }
+
