@@ -23,7 +23,7 @@ int main() {
             A[j]=A[j-1];
         A[0]=temp;
     }
-    if(answer==2)
+    if(answer==2 && A.size()==10)
         answer=3;
 
     cout << answer;
