@@ -27,7 +27,7 @@ int main() {
             j++;
         }
     }
-    for(int i=0;i<e1-s1+1;i++)
+    for(int i=0;i<n-(e1-s1+1);i++)
         blocks[i]=temp[i];
     
     j=0;
