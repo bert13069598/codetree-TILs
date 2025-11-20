@@ -63,7 +63,7 @@ int main() {
             cin >> a[i][j];
         }
     }
-    if(n==1){
+    if(m==1){
         bomb();
     }else{
         while(k--){
