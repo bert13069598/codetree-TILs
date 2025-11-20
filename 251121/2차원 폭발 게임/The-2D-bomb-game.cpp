@@ -63,15 +63,19 @@ int main() {
             cin >> a[i][j];
         }
     }
-
-    while(k--){
+    if(n==1){
+        bomb();
+    }else{
+        while(k--){
+            while(bomb())
+                fall();
+            rotate();
+            fall();
+        }
         while(bomb())
             fall();
-        rotate();
-        fall();
     }
-    while(bomb())
-        fall();
+
 
     int answer=0;
     for(int i=0;i<n*n;i++)
@@ -88,4 +92,5 @@ int main() {
 
     return 0;
 }
+
 
