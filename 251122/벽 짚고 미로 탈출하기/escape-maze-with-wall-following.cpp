@@ -22,7 +22,7 @@ int main() {
     int answer=0;
     int x=r-1;
     int y=c-1;
-    int dir=0;
+    int dir=3;
     while(true){
         for(int i=0;i<4;i++){
             dir=(dir+1)%4;
