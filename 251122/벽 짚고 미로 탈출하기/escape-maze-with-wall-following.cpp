@@ -22,8 +22,9 @@ int main() {
     int answer=0;
     int x=r-1;
     int y=c-1;
+    int dir=0;
     while(true){
-        for(int i=0;i<4;i++){
+        for(int i=dir;i<4;i++){
             int nx=x+dx[i];
             int ny=y+dy[i];
             int rx=x+dx[(i+1)%4];
@@ -38,12 +39,15 @@ int main() {
             int nry=ny+dy[(i+1)%4];
             if(grid[nrx][nry]=='.'){
                 answer++;
+                dir=(i+1)%4;
                 x=nrx;
                 y=nry;
             }else{
+                dir=i;
                 x=nx;
                 y=ny;
             }
+            // grid[x][y]=1;
             answer++;
             break;
         }
@@ -54,6 +58,11 @@ int main() {
             break;
         }
     }
+    // for (int i = 0; i < n; i++) {
+    //     for (int j = 0; j < n; j++) {
+    //         cout << grid[i][j];
+    //     }cout<<"\n";
+    // }
     cout << answer;
 
     return 0;
