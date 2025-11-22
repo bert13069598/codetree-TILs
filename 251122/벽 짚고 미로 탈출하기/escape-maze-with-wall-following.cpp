@@ -22,7 +22,8 @@ int main() {
     int answer=0;
     int x=r-1;
     int y=c-1;
-    int dir=3;
+    int origin=3;
+    int dir=origin;
     while(true){
         for(int i=0;i<4;i++){
             dir=(dir+1)%4;
@@ -53,18 +54,20 @@ int main() {
         }
         if((unsigned)x>=n||(unsigned)y>=n)
             break;
-        if(x==r-1&&y==c-1&&dir==3){
-            answer=-1;
-            break;
+        if(x==r-1&&y==c-1){
+            if(dir==origin){
+                answer=-1;
+                break;
+            }else{
+                origin=dir;
+            }
+            
         }
     }
-    // for (int i = 0; i < n; i++) {
-    //     for (int j = 0; j < n; j++) {
-    //         cout << grid[i][j];
-    //     }cout<<"\n";
-    // }
+
     cout << answer;
 
     return 0;
 }
+
 
