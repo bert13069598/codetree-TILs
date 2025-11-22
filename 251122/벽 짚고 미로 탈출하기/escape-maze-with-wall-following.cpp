@@ -22,8 +22,8 @@ int main() {
     int answer=0;
     int x=r-1;
     int y=c-1;
-    int origin=3;
-    int dir=origin;
+    int dir=3;
+    int tmp=3;
     while(true){
         for(int i=0;i<4;i++){
             dir=(dir+1)%4;
@@ -55,13 +55,12 @@ int main() {
         if((unsigned)x>=n||(unsigned)y>=n)
             break;
         if(x==r-1&&y==c-1){
-            if(dir==origin){
+            if(dir==3||!tmp){
                 answer=-1;
                 break;
-            }else{
-                origin=dir;
-            }
-            
+            }else
+                tmp--;
+                
         }
     }
 
