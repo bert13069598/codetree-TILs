@@ -53,7 +53,7 @@ int main() {
         }
         if((unsigned)x>=n||(unsigned)y>=n)
             break;
-        if(x==r-1&&y==c-1){
+        if(x==r-1&&y==c-1&&dir==3){
             answer=-1;
             break;
         }
