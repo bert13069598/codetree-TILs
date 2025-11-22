@@ -22,7 +22,7 @@ int main() {
         for(;j<k+m;j++)
             if(grid[nx][j]==1)
                 break;
-        if(j==k+m)
+        if(j==k+m && nx<n)
             x=nx;
         else
             for(int j=k;j<k+m;j++)
