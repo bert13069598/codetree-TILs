@@ -24,30 +24,30 @@ int main() {
     int y=c-1;
     int dir=0;
     while(true){
-        for(int i=dir;i<4;i++){
-            int nx=x+dx[i];
-            int ny=y+dy[i];
-            int rx=x+dx[(i+1)%4];
-            int ry=y+dy[(i+1)%4];
-            // if((unsigned)nx>=n||(unsigned)ny>=n)
-            //     continue;
+        for(int i=0;i<4;i++){
+            dir=(dir+1)%4;
+            int nx=x+dx[dir];
+            int ny=y+dy[dir];
+            int rx=x+dx[(dir+1)%4];
+            int ry=y+dy[(dir+1)%4];
             if(grid[rx][ry]!='#')
                 continue;
             if(grid[nx][ny]=='#')
                 continue;
-            int nrx=nx+dx[(i+1)%4];
-            int nry=ny+dy[(i+1)%4];
+            int nrx=nx+dx[(dir+1)%4];
+            int nry=ny+dy[(dir+1)%4];
             if(grid[nrx][nry]=='.'){
                 answer++;
-                dir=(i+1)%4;
                 x=nrx;
                 y=nry;
             }else{
-                dir=i;
+                if(dir-1<0)
+                    dir=3;
+                else
+                    dir--;
                 x=nx;
                 y=ny;
             }
-            // grid[x][y]=1;
             answer++;
             break;
         }
@@ -67,3 +67,4 @@ int main() {
 
     return 0;
 }
+
