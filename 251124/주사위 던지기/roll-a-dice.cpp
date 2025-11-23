@@ -1,9 +1,6 @@
 #include <iostream>
 
 using namespace std;
-#define W 0
-#define N 1
-#define B 2
 
 int n, m;
 int r, c;
@@ -14,6 +11,7 @@ int grid[100][100]{};
 int dx[4]={0,0,-1,1};
 int dy[4]={-1,1,0,0};
 int dice[3] = {4, 5, 6};  // W:0 N:1 B:2
+enum {W, N, B};
 
 int main() {
     cin >> n >> m >> r >> c;
