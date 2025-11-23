@@ -11,7 +11,7 @@ char dirs[4]={'L','R','U','D'};
 int grid[100][100]{};
 int dx[4]={0,0,-1,1};
 int dy[4]={-1,1,0,0};
-map<char,int> dice={{'t',1},{'s',2},{'e',3},{'w',4},{'n',5},{'b',6}};
+map<char,int> dice={{'w',4},{'n',5},{'b',6}};
 
 int main() {
     cin >> n >> m >> r >> c;
@@ -34,26 +34,18 @@ int main() {
             continue;
         if(dir=='L'){
             int temp=dice['w'];
-            dice['w']=dice['t'];
-            dice['t']=dice['e'];
-            dice['e']=dice['b'];
+            dice['w']=7-dice['b'];
             dice['b']=temp;
         }else if(dir=='R'){
-            int temp=dice['e'];
-            dice['e']=dice['t'];
-            dice['t']=dice['w'];
+            int temp=7-dice['w'];
             dice['w']=dice['b'];
             dice['b']=temp;
         }else if(dir=='U'){
             int temp=dice['n'];
-            dice['n']=dice['t'];
-            dice['t']=dice['s'];
-            dice['s']=dice['b'];
+            dice['n']=7-dice['b'];
             dice['b']=temp;
         }else if(dir=='D'){
-            int temp=dice['s'];
-            dice['s']=dice['t'];
-            dice['t']=dice['n'];
+            int temp=7-dice['n'];
             dice['n']=dice['b'];
             dice['b']=temp;
         }
