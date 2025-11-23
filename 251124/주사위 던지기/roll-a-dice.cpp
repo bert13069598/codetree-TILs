@@ -6,6 +6,7 @@ using namespace std;
 int n, m;
 int r, c;
 char dir;
+char dirs[4]={'L','R','U','D'};
 
 int grid[100][100]{};
 int dx[4]={0,0,-1,1};
@@ -21,41 +22,41 @@ int main() {
     for (int i = 0; i < m; i++) {
         cin >> dir;
         int nx,ny;
+        for(int j=0;j<4;j++){
+            if(dir==dirs[j]){
+                nx=x+dx[j];
+                ny=y+dy[j];
+                break;
+            }
+
+        }
+        if((unsigned)nx>=n||(unsigned)ny>=n)
+            continue;
         if(dir=='L'){
             int temp=dice['w'];
             dice['w']=dice['t'];
             dice['t']=dice['e'];
             dice['e']=dice['b'];
             dice['b']=temp;
-            nx=x+dx[0];
-            ny=y+dy[0];
         }else if(dir=='R'){
             int temp=dice['e'];
             dice['e']=dice['t'];
             dice['t']=dice['w'];
             dice['w']=dice['b'];
             dice['b']=temp;
-            nx=x+dx[1];
-            ny=y+dy[1];
         }else if(dir=='U'){
             int temp=dice['n'];
             dice['n']=dice['t'];
             dice['t']=dice['s'];
             dice['s']=dice['b'];
             dice['b']=temp;
-            nx=x+dx[2];
-            ny=y+dy[2];
         }else if(dir=='D'){
             int temp=dice['s'];
             dice['s']=dice['t'];
             dice['t']=dice['n'];
             dice['n']=dice['b'];
             dice['b']=temp;
-            nx=x+dx[3];
-            ny=y+dy[3];
         }
-        if((unsigned)nx>=n||(unsigned)ny>=n)
-            continue;
         grid[nx][ny]=dice['b'];
         x=nx;
         y=ny;
