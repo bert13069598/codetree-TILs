@@ -44,12 +44,12 @@ int main() {
                 cout<<answer;
                 return 0;
             }
-            if(map[nx][ny]==0){
+            if(map[nx][ny]!=1){
                 auto [bx,by]=dq.back();
                 dq.pop_back();
                 map[bx][by]=0;
-            }else if(map[nx][ny]==1){
-            }else if(map[nx][ny]==2){
+            }
+            if(map[nx][ny]==2){
                 cout<<answer;
                 return 0;
             }
