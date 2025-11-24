@@ -7,8 +7,25 @@ int grid[100][100];
 
 int dx[4]={0,1,0,-1};  // R D L U
 int dy[4]={1,0,-1,0};
+enum {R, D, L, U};
 
 int game(int x,int y,int d){
+    if(grid[x][y]==1){
+        if(d==D||d==U)
+            d=(d+1)%4;
+        else{
+            if(d==0)
+                d=3;
+            else
+                d--;
+        }
+    }else if(grid[x][y]==2){
+        if(d==R||d==L)
+            d=(d+1)%4;
+        else
+            d--;
+    }
+
     int t=1;
     while(true){
         t++;
@@ -17,7 +34,7 @@ int game(int x,int y,int d){
         if((unsigned)nx>=n||(unsigned)ny>=n)
             break;
         if(grid[nx][ny]==1){
-            if(d==1||d==3)
+            if(d==D||d==U)
                 d=(d+1)%4;
             else{
                 if(d==0)
@@ -26,14 +43,10 @@ int game(int x,int y,int d){
                     d--;
             }
         }else if(grid[nx][ny]==2){
-            if(d==0||d==2)
+            if(d==R||d==L)
                 d=(d+1)%4;
-            else{
-                if(d==0)
-                    d=3;
-                else
-                    d--;
-            }
+            else
+                d--;
         }
         x=nx;
         y=ny;
