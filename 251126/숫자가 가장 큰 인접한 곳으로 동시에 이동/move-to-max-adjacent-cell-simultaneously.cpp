@@ -1,5 +1,4 @@
 #include <iostream>
-#include <queue>
 
 using namespace std;
 
@@ -19,41 +18,36 @@ int main() {
             cin >> a[i][j];
         }
     }
-    queue<pair<int,int>> q;
+
     for (int i = 0; i < m; i++) {
         cin >> r >> c;
         r--;
         c--;
-        q.emplace(r,c);
         v[r][c]=1;
     }
-
     while(t--){
-        int qs=q.size();
-        for(int i=0;i<qs;i++){
-            auto [x,y]=q.front();
-            q.pop();
-            if(v[x][y]==0)
-                continue;
-            int mx,my,mc=0;
-            for(int j=0;j<4;j++){
-                int nx=x+dx[j];
-                int ny=y+dy[j];
-                if((unsigned)nx>=n||(unsigned)ny>=n)
-                    continue;
-                if(a[nx][ny]>mc){
-                    mx=nx;
-                    my=ny;
-                    mc=a[nx][ny];
+        int nv[n][n]{};
+        for(int i=0;i<n*n;i++){
+            int x=i/n;
+            int y=i%n;
+            if(v[x][y]==1){
+                int mx,my,mc=0;
+                for(int j=0;j<4;j++){
+                    int nx=x+dx[j];
+                    int ny=y+dy[j];
+                    if((unsigned)nx>=n||(unsigned)ny>=n)
+                        continue;
+                    if(a[nx][ny]>mc){
+                        mx=nx;
+                        my=ny;
+                        mc=a[nx][ny];
+                    }
                 }
+                nv[mx][my]++;
             }
-            q.emplace(mx,my);
-            v[x][y]--;
-            v[mx][my]++;
         }
         for(int i=0;i<n*n;i++)
-            if(v[i/n][i%n]>1)
-                v[i/n][i%n]=0;
+            v[i/n][i%n]=nv[i/n][i%n]==1;
     }
 
     int answer=0;
