@@ -29,7 +29,8 @@ int main() {
     }
 
     while(t--){
-        for(int i=0;i<m;i++){
+        int qs=q.size();
+        for(int i=0;i<qs;i++){
             auto [x,y]=q.front();
             q.pop();
             if(v[x][y]==0)
@@ -47,6 +48,7 @@ int main() {
                 }
             }
             q.emplace(mx,my);
+            v[x][y]--;
             v[mx][my]++;
         }
         for(int i=0;i<n*n;i++)
@@ -54,7 +56,11 @@ int main() {
                 v[i/n][i%n]=0;
     }
 
-    cout<<q.size();
+    int answer=0;
+    for(int i=0;i<n*n;i++)
+        answer+=v[i/n][i%n];
+
+    cout<<answer;
 
     return 0;
 }
