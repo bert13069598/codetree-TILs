@@ -1,0 +1,60 @@
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int n, m, t;
+int a[20][20];
+int v[20][20]{};
+int r, c;
+
+int dx[4]={-1,1,0,0};
+int dy[4]={0,0,-1,1};
+
+int main() {
+    cin >> n >> m >> t;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> a[i][j];
+        }
+    }
+    queue<pair<int,int>> q;
+    for (int i = 0; i < m; i++) {
+        cin >> r >> c;
+        r--;
+        c--;
+        q.emplace(r,c);
+        v[r][c]=1;
+    }
+
+    while(t--){
+        for(int i=0;i<m;i++){
+            auto [x,y]=q.front();
+            q.pop();
+            if(v[x][y]==0)
+                continue;
+            int mx,my,mc=0;
+            for(int j=0;j<4;j++){
+                int nx=x+dx[j];
+                int ny=y+dy[j];
+                if((unsigned)nx>=n||(unsigned)ny>=n)
+                    continue;
+                if(a[nx][ny]>mc){
+                    mx=nx;
+                    my=ny;
+                    mc=a[nx][ny];
+                }
+            }
+            q.emplace(mx,my);
+            v[mx][my]++;
+        }
+        for(int i=0;i<n*n;i++)
+            if(v[i/n][i%n]>1)
+                v[i/n][i%n]=0;
+    }
+
+    cout<<q.size();
+
+    return 0;
+}
