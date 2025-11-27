@@ -32,7 +32,7 @@ int main() {
         }
 
         int answer=0;
-        int tmp=n*n;
+        int tmp=2*n;
         while(tmp--){
             int nv[n][n]{};  // next for va
             int nd[n][n]{};  // next for da
