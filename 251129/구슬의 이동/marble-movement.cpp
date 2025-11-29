@@ -6,9 +6,10 @@ using namespace std;
 int n, m, t, k;
 int r, c;
 char d[50*50];
-int dx[2]={1,0};
-int dy[2]={0,1};
+int dx[4]={1,0,-1,0};
+int dy[4]={0,1,0,-1};
 char dirs[4]={'D','R','U','L'};
+enum {D,R,U,L};
 int v;
 
 priority_queue<pair<int,int>> pq[50][50];
@@ -22,7 +23,7 @@ int main() {
         r--;
         c--;
         va[r][c]++;
-        pq[r][c].emplace(v,i);
+        pq[r][c].emplace(-v,-i);
     }
 
     while(t--){
@@ -31,43 +32,45 @@ int main() {
             for(int j=0;j<n;j++){
                 while(va[i][j]>0){
                     auto [v,p]=pq[i][j].top();
+                    v=-v;
+                    p=-p;
                     va[i][j]--;
                     pq[i][j].pop();
                     int k=0;
                     for(;k<4;k++)
                         if(d[p]==dirs[k])
                             break;
-                    if(k==2||k==3){
-                        v=n-v%n;
-                        k%=2;
-                    }
                     int nx=i+dx[k]*v;
                     int ny=j+dy[k]*v;
-                    if(nx>=n||ny>=n){
-                        int quo,rem;
-                        if(k==0){  // D
-                            quo=(i+v)/(n-1);
-                            rem=(i+v)%(n-1);
-                            if(quo%2)
-                                nx=n-1-rem;
-                            else
-                                nx=rem;
-                        }else{  // R
-                            quo=(j+v)/(n-1);
-                            rem=(j+v)%(n-1);
-                            if(quo%2)
-                                ny=n-1-rem;
-                            else
-                                ny=rem;
-                        }
-                        if(quo%2)
-                            d[p]=(k+2)%4;
+                    if(k==U)
+                        nx=n-1-nx;
+                    else if(k==L)
+                        ny=n-1-ny;
+                    // cout<<"("<<p+1<<","<<v<<")"<<i<<" "<<j<<"->";
+                    // cout<<nx<<" "<<ny<<"->";
+                    int quo,rem;
+                    if(k==D||k==U){
+                        quo=nx/(n-1);
+                        rem=nx%(n-1);
+                    }else{
+                        quo=ny/(n-1);
+                        rem=ny%(n-1);
                     }
+                    if((k==U||k==L) != quo%2){ // !xor
+                        rem=n-1-rem;
+                        d[p]=dirs[(k+2)%4];
+                    }
+                    if(k==D||k==U)
+                        nx=rem;
+                    else
+                        ny=rem;
+                    // cout<<nx<<" "<<ny<<endl;
                     nv[nx][ny]++;
-                    pq[nx][ny].emplace(v,p);
+                    pq[nx][ny].emplace(-v,-p);
                 }
             }
         }
+        // cout<<"\n";
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
                 while(nv[i][j]>k){
@@ -87,3 +90,4 @@ int main() {
 
     return 0;
 }
+
