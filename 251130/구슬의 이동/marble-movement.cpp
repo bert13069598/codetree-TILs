@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <stack>
 
 using namespace std;
 
@@ -12,7 +13,7 @@ char dirs[4]={'D','R','U','L'};
 enum {D,R,U,L};
 int v;
 
-priority_queue<pair<int,int>> pq[50][50];  // now
+stack<pair<int,int>> na[50][50];  // now
 
 int main() {
     cin >> n >> m >> t >> k;
@@ -21,28 +22,28 @@ int main() {
         cin >> r >> c >> d[i] >> v;
         r--;
         c--;
-        pq[r][c].emplace(-v,-i);
+        na[r][c].emplace(-v,-i);
     }
 
     while(t--){
         priority_queue<pair<int,int>> nv[n][n];  // next
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
-                while(pq[i][j].size()>0){
-                    auto [v,p]=pq[i][j].top();
+                while(na[i][j].size()>0){
+                    auto [v,p]=na[i][j].top();
                     v=-v;
                     p=-p;
-                    pq[i][j].pop();
+                    na[i][j].pop();
                     int k=0;
                     for(;k<4;k++)
                         if(d[p]==dirs[k])
                             break;
                     int x=i,y=j,nx,ny;
+                    // cout<<"("<<p+1<<","<<dirs[k]<<")"<<i<<" "<<j<<"->";
                     for(int l=0;l<v;l++){
-                        cout<<" "<<x<<" "<<y<<"\n";'
                         nx=x+dx[k];
                         ny=y+dy[k];
-                        if((unsigned)nx>=n||(unsigned)nx>=n){
+                        if((unsigned)nx>=n||(unsigned)ny>=n){
                             k=(k+2)%4;
                             nx=x+dx[k];
                             ny=y+dy[k];
@@ -51,8 +52,7 @@ int main() {
                         y=ny;
                     }
                     d[p]=dirs[k];
-                    cout<<"("<<p+1<<","<<dirs[k]<<")"<<i<<" "<<j<<"->";
-                    cout<<nx<<" "<<ny<<endl;
+                    // cout<<"("<<p+1<<","<<dirs[k]<<")"<<nx<<" "<<ny<<endl;
                     nv[nx][ny].emplace(-v,-p);
                 }
             }
@@ -62,7 +62,7 @@ int main() {
             for(int j=0;j<n;j++){
                 while(nv[i][j].size()>0){
                     if(nv[i][j].size()<=k)
-                        pq[i][j].emplace(nv[i][j].top());
+                        na[i][j].emplace(nv[i][j].top());
                     nv[i][j].pop();                    
                 }
             }
@@ -72,7 +72,7 @@ int main() {
     int answer=0;
     for(int i=0;i<n;i++)
         for(int j=0;j<n;j++)
-            answer+=pq[i][j].size();
+            answer+=na[i][j].size();
     cout<<answer;
 
     return 0;
