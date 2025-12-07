@@ -41,16 +41,16 @@ int main() {
             int ny=y+dy[k];
             if((unsigned)nx>=n||(unsigned)ny>=n){
                 d[p]=dirs[(k+2)%4];
-                next[{x,y}].emplace(-p);
+                next[{x,y}].emplace(p);
             }else{
-                next[{nx,ny}].emplace(-p);
+                next[{nx,ny}].emplace(p);
             }
         }
         for(auto& [k,v]:next){
             int sum=0;
-            int p=-v.top();
+            int p=v.top();
             while(!v.empty()){
-                sum+=w[-v.top()];
+                sum+=w[v.top()];
                 v.pop();
             }
             w[p]=sum;
