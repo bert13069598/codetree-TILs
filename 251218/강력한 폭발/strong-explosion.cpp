@@ -28,13 +28,13 @@ int dfs(int d,int bomb){
 
         return sum;
     }
-    int bomb1=0,bomb2=0,bomb3=0;
+    int answer=0;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if(grid[i][j]==1){
                 grid[i][j]=0;
                 visit[i][j]++;
-                // cout<<d<<" "<<bomb<<"\n";
+                // cout<<d<<"("<<i<<","<<j<<")"<<bomb<<"\n";
                 if(bomb==1){
                     for(int k=0;k<4;k++){
                         int nx=i+dx1[k];
@@ -61,10 +61,11 @@ int dfs(int d,int bomb){
                         visit[nx][ny]++;
                     }
                 }
-
-                bomb1=dfs(d-1,1);
-                bomb2=dfs(d-1,2);
-                bomb3=dfs(d-1,3);
+                if(d-1>0){
+                    answer=max(max(dfs(d-1,1),dfs(d-1,2)),dfs(d-1,3));
+                }else{
+                    answer=dfs(d-1,0);
+                }
 
                 grid[i][j]=1;
                 visit[i][j]--;
@@ -94,10 +95,10 @@ int dfs(int d,int bomb){
                         visit[nx][ny]--;
                     }
                 }
+                return answer;
             }
         }
     }
-    return max(max(bomb1,bomb2),bomb3);
 }
 
 int main() {
@@ -111,11 +112,7 @@ int main() {
         }
     }
 
-    int answer=0;
-    answer=max(answer,dfs(d,1));
-    answer=max(answer,dfs(d,2));
-    answer=max(answer,dfs(d,3));
-    cout<<answer;
+    cout<<max(max(dfs(d,1),dfs(d,2)),dfs(d,3));
 
     return 0;
 }
