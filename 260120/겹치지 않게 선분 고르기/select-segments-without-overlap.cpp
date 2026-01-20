@@ -17,7 +17,7 @@ void dfs(int now,int d){
     for(int next=now+1;next<n;next++){
         bool isol=false;
         for(int prev=0;prev<now;prev++){
-            if(v[prev] && ((x1[prev]<=x2[now])==(x2[now]>=x1[next]))){
+            if(v[prev] && ((x1[prev]<=x2[next])==(x2[prev]>=x1[next]))){
                 isol=true;
                 break;
             }
