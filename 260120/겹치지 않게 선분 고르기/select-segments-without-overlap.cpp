@@ -4,7 +4,7 @@ using namespace std;
 
 int n;
 int x1[15], x2[15];
-bool v[15];
+bool v[15]{};
 int answer=0;
 
 void dfs(int now,int d){
@@ -17,13 +17,15 @@ void dfs(int now,int d){
     for(int next=now+1;next<n;next++){
         bool isol=false;
         for(int prev=0;prev<now;prev++){
-            if((x1[prev]<=x2[now])==(x2[now]>=x1[next])){
+            if(v[prev] && ((x1[prev]<=x2[now])==(x2[now]>=x1[next]))){
                 isol=true;
                 break;
             }
         }
         if(!isol && ((x1[now]<=x2[next])^(x2[now]>=x1[next]))){
+            v[next]=1;
             dfs(next,d+1);
+            v[next]=0;
         }
     }
 }
@@ -38,8 +40,11 @@ int main() {
     if(n==1)
         answer=1;
     else{
-        for(int now=0;now<n-1;now++)
+        for(int now=0;now<n-1;now++){
+            v[now]=1;
             dfs(now,1);
+            v[now]=0;
+        }
     }
     
     cout << answer;
