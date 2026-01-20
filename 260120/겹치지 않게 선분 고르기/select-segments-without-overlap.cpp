@@ -34,9 +34,13 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> x1[i] >> x2[i];
     }
-
-    for(int now=0;now<n-1;now++)
-        dfs(now,1);
+    
+    if(n==1)
+        answer=1;
+    else{
+        for(int now=0;now<n-1;now++)
+            dfs(now,1);
+    }
     
     cout << answer;
 
