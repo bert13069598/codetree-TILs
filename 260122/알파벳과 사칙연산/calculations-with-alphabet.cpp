@@ -20,7 +20,7 @@ int dfs(int now){
         }
         return ret;
     }
-    int answer=0;
+    int answer=-1;
     int next=now+1;
     for(;next<6;next++)
         if(abcdef[next])
