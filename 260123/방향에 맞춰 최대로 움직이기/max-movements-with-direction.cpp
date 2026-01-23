@@ -30,7 +30,7 @@ void dfs(int now,int d){
         dfs(q.front(),d+1);
         q.pop();
     }
-    answer=max(answer,d-1);
+    answer=max(answer,d);
 }
 
 int main() {
@@ -47,7 +47,7 @@ int main() {
     cin >> r >> c;
     r--;
     c--;
-    dfs(r*n+c,1);
+    dfs(r*n+c,0);
 
     cout<<answer;
 
