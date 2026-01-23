@@ -35,6 +35,10 @@ void dfs(int now,int d){
 
 int main() {
     cin >> n;
+    if(n==1){
+        cout<<answer;
+        return 0;
+    }
 
     for (int i = 0; i < n*n; i++)
         cin >> num[i];
