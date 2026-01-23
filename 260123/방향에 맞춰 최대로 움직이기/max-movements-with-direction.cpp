@@ -19,7 +19,7 @@ void dfs(int now,int d){
         int next=tmp+dx[dir]*n+dy[dir];
         if(next>=n*n || next<0)
             break;
-        if(dx[dir]*dy[dir]==0 && tmp/n!=next/n)
+        if((tmp/n+dx[dir])!=next/n)
             break;
         if(num[next]>num[now]){
             q.emplace(next);
@@ -30,15 +30,11 @@ void dfs(int now,int d){
         dfs(q.front(),d+1);
         q.pop();
     }
-    answer=max(answer,d);
+    answer=max(answer,d-1);
 }
 
 int main() {
     cin >> n;
-    if(n==1){
-        cout<<answer;
-        return 0;
-    }
 
     for (int i = 0; i < n*n; i++)
         cin >> num[i];
