@@ -4,7 +4,6 @@ using namespace std;
 
 int N, M;
 int num[10];
-int cnt[10]{};
 
 void dfs(int now){
     if(now==N-1){
@@ -25,6 +24,7 @@ void dfs(int now){
 int main() {
     cin >> N >> M;
 
+    num[0]=1;
     dfs(0);
 
     return 0;
