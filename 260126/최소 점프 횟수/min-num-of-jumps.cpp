@@ -15,8 +15,6 @@ int dfs(int now,int d){
             break;
         answer=min(answer,dfs(next,d+1));
     }
-    if(answer==10)
-        answer=-1;
     return answer;
 }
 
@@ -26,7 +24,10 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> num[i];
     }
-
-    cout<<dfs(0,0);
+    int answer=dfs(0,0);
+    if(answer==10)
+        cout<<-1;
+    else
+        cout<<answer;
     return 0;
 }
