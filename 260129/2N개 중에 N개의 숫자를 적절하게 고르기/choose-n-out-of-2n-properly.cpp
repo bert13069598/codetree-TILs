@@ -23,7 +23,7 @@ void dfs(int now){
     }
     for(int i=now;i<2*n;i++){
         if(i>0 && pick[now-1]>=i)
-            continue;
+            break;
         pick[now]=i;
         dfs(now+1);
     }
