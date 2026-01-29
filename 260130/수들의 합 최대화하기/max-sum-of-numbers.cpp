@@ -4,23 +4,25 @@ using namespace std;
 
 int n;
 int grid[10][10];
-int v[10]{};
+int num[10];
+bool v[10];
 int answer=0;
 
 void dfs(int now){
     if(n==now){
         int sum=0;
         for(int i=0;i<n;i++)
-            sum+=grid[i][v[i]];
+            sum+=grid[i][num[i]];
         answer=max(answer,sum);
         return;
     }
     for(int i=0;i<n;i++){
-        if(v[now])
+        if(v[i])
             continue;
-        v[now]=i;
+        num[now]=i;
+        v[i]=true;
         dfs(now+1);
-        v[i]=0;
+        v[i]=false;
     }
 }
 
