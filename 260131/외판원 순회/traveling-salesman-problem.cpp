@@ -34,7 +34,7 @@ void dfs(int now){
     }else{
         int i=idx[now-1].second;
         for(int j=1;j<n;j++){
-            if(i==j || v[j])
+            if(i==j || v[j] || !A[i][j])
                 continue;
             idx[now]=make_pair(i,j);
             v[j]=true;
