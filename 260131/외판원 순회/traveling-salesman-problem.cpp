@@ -22,6 +22,8 @@ void dfs(int now){
     }
     if(0==now){
         for(int j=1;j<n;j++){
+            if(!A[0][j])
+                continue;
             idx[now]=make_pair(0,j);
             v[j]=true;
             dfs(now+1);
@@ -29,12 +31,14 @@ void dfs(int now){
         }
     }else if(n-1==now){
         int i=idx[now-1].second;
-        idx[now]=make_pair(i,0);
-        dfs(now+1);
+        if(A[i][0]){
+            idx[now]=make_pair(i,0);
+            dfs(now+1);
+        }
     }else{
         int i=idx[now-1].second;
         for(int j=1;j<n;j++){
-            if(i==j || v[j] || !A[i][j])
+            if(!A[i][j] || v[j])
                 continue;
             idx[now]=make_pair(i,j);
             v[j]=true;
