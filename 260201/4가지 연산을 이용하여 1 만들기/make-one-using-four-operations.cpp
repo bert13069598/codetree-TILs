@@ -20,14 +20,16 @@ int main() {
         }
         for(int i=0;i<4;i++){
             int next;
-            if(i==0){
+            if(i==3){
                 q.emplace(now-1,d+1);
-            }else if(i==1){
+            }else if(i==2){
                 q.emplace(now+1,d+1);
-            }else if(i==2 && now%2==0){
+            }else if(i==1 && now%2==0){
                 q.emplace(now/2,d+1);
-            }else if(i==3 && now%3==0){
+                break;
+            }else if(i==0 && now%3==0){
                 q.emplace(now/3,d+1);
+                break;
             }
         }
     }
