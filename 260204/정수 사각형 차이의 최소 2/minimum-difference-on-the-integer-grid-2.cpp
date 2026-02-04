@@ -26,8 +26,8 @@ int main() {
         for(int j=0;j<n-1;j++){
             bool issame=false;
             for(int k=0;k<m;k++){
-                auto &l=(a[k][i+1][j].first==0) ? a[0][i+1][j] : a[k][i+1][j];
-                auto &r=(a[k][i+1][j].first==0) ? a[0][i][j+1] : a[k][i][j+1];
+                auto &l=(a[k][i+1][j].first==0) ? a[k-1][i+1][j] : a[k][i+1][j];
+                auto &r=(a[k][i][j+1].first==0) ? a[k-1][i][j+1] : a[k][i][j+1];
                 int next=grid[i+1][j+1];
                 int r_diff=max(r.second, next) - min(r.first, next);
                 int l_diff=max(l.second, next) - min(l.first, next);
@@ -36,7 +36,8 @@ int main() {
                 else if(l_diff<r_diff)
                     a[k][i+1][j+1]=make_pair(min(l.first, next), max(l.second, next));
                 else{
-                    if(l.first==r.first && l.second==r.second)
+                    if((min(r.first, next)==min(l.first, next)) && 
+                       (max(r.second, next)==max(l.second, next)))
                         a[k][i+1][j+1]=make_pair(min(r.first, next), max(r.second, next));
                     else{
                         // r
