@@ -15,21 +15,22 @@ int main() {
     for(;i<n-1;i++){
         if(!arr[i+1]){
             int j=0;
-            while(j<arr[i]){
+            while(true){
                 if(arr[i+1+j])
+                    break;
+                if(j==arr[i]-1)
                     break;
                 j++;
             }
             if(!arr[i+1+j]){
+                i++;
                 break;
             }else{
-                cout<<"jump "<<j<<"\n";
                 i+=j;
                 jump+=j;
             }
         }
     }
-    cout<<i<<" "<<jump<<"\n";
     cout<<i-jump;
 
     return 0;
