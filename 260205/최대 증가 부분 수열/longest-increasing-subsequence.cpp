@@ -16,10 +16,26 @@ int main() {
     for(int i=0;i<n-1;i++){
         if(M[i+1]>M[i])
             a[i+1]=a[i]+1;
-        else
-            a[i+1]=a[i];
+        else{
+            int j=i;
+            while(j){
+                if(M[i+1]>=M[j])
+                    break;
+                j--;
+            }
+            if(j){
+                if(M[i+1]>M[j])
+                    a[i+1]=a[j]+1;
+                else
+                    a[i+1]=a[j];
+            }else
+                a[i+1]=a[i];
+        }
     }
-    cout<<a[n-1];
+    int answer=0;
+    for(int i=0;i<n;i++)
+        answer=max(answer,a[i]);
+    cout<<answer;
 
     return 0;
 }
