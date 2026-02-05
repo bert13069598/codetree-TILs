@@ -16,19 +16,20 @@ int main() {
         if(!arr[i+1]){
             int j=0;
             while(j<arr[i]){
-                if(arr[i+j+1])
+                if(arr[i+1+j])
                     break;
                 j++;
             }
-            if(!arr[i+j+1]){
-                i++;
+            if(!arr[i+1+j]){
                 break;
             }else{
+                cout<<"jump "<<j<<"\n";
                 i+=j;
                 jump+=j;
             }
         }
     }
+    cout<<i<<" "<<jump<<"\n";
     cout<<i-jump;
 
     return 0;
