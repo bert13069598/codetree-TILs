@@ -14,38 +14,20 @@ int main() {
 
     a[0]=1;
     for(int i=0;i<n-1;i++){
-        if(M[i+1]>M[i]){
-            int next=a[i]+1;
-            int j=i;
-            while(j){
-                if(M[i+1]==M[j])
-                    next=max(next,a[j]);
-                else if(M[i+1]>M[j])
-                    next=max(next,a[j]+1);
-                j--;
-            }
-            a[i+1]=next;
-        }else{
-            int j=i;
-            while(j){
-                if(M[i+1]>=M[j])
-                    break;
-                j--;
-            }
-            if(j){
-                if(M[i+1]>M[j])
-                    a[i+1]=a[j]+1;
-                else
-                    a[i+1]=a[j];
-            }else
-                a[i+1]=a[i];
+        int j=i;
+        int cnt=1;
+        while(j>=0){
+            if(M[i+1]==M[j])
+                cnt=max(cnt,a[j]);
+            else if(M[i+1]>M[j])
+                cnt=max(cnt,a[j]+1);
+            j--;
         }
+        a[i+1]=cnt;        
     }
     int answer=0;
-    for(int i=0;i<n;i++){
-        // cout<<a[i]<<" ";
+    for(int i=0;i<n;i++)
         answer=max(answer,a[i]);
-    }
     cout<<answer;
 
     return 0;
