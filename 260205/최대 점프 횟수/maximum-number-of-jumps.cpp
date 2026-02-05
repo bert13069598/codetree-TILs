@@ -4,34 +4,27 @@ using namespace std;
 
 int n;
 int arr[1000];
+int a[1000];
 
 int main() {
     cin >> n;
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
-    int i=0;
-    int jump=0;
-    for(;i<n-1;i++){
-        if(!arr[i+1]){
-            int j=0;
-            while(true){
-                if(arr[i+1+j])
-                    break;
-                if(j==arr[i]-1)
-                    break;
-                j++;
-            }
-            if(!arr[i+1+j]){
-                i++;
-                break;
-            }else{
-                i+=j;
-                jump+=j;
-            }
+
+    a[0]=1;
+    for(int i=0;i<n-1;i++){
+        if(!a[i])
+            continue;
+        for(int j=i+1;j<min(n,i+1+arr[i]);j++){
+            if(arr[j])
+                a[j]=max(a[j],a[i]+1);
         }
     }
-    cout<<i-jump;
+    // for(int i=0;i<n;i++)
+    //     cout<<a[i]<<" ";
+    // cout<<"\n";
 
+    cout<<(a[n-1]==0 ? 1 : a[n-1]-1);
     return 0;
 }
