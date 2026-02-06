@@ -1,21 +1,22 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 int n;
-int x1[1000];
-int x2[1000];
+pair<int,int> x[1000];
 int a[1000];
 
 int main() {
     cin >> n;
     for (int i = 0; i < n; i++) {
-        cin >> x1[i] >> x2[i];
+        cin >> x[i].first >> x[i].second;
     }
 
+    sort(x, x+n);
     for(int i=0;i<n-1;i++)
         for(int j=i+1;j<n;j++)
-            if((x1[i]<x2[j]) == (x2[i]<x1[j]))
+            if((x[i].first<x[j].second) == (x[i].second<x[j].first))
                 a[j]=max(a[j],a[i]+1);
     
     int answer=0;
@@ -25,3 +26,4 @@ int main() {
 
     return 0;
 }
+
