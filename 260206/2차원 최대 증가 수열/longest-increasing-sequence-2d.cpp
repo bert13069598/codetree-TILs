@@ -17,11 +17,11 @@ int main() {
 
     v[0][0]=true;
     for(int i=0;i<n-1;i++){
-        for(int j=0;j<n-1;j++){
+        for(int j=0;j<m-1;j++){
             if(!v[i][j])
                 continue;
             for(int p=i+1;p<n;p++){
-                for(int q=j+1;q<n;q++){
+                for(int q=j+1;q<m;q++){
                     if(grid[p][q]>grid[i][j]){
                         a[p][q]=max(a[p][q],a[i][j]+1);
                         v[p][q]=true;
