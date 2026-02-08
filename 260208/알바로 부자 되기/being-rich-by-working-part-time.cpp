@@ -16,7 +16,7 @@ int main() {
     for(int i=0;i<n;i++){
         b[i]=max(b[i],p[i]);
         for(int j=i+1;j<n;j++){
-            if((s[i]<e[j])==(e[i]<s[j])){
+            if((s[i]<e[j])==(e[i]<s[j]) && s[i]!=s[j] && e[i]!=e[j]){
                 b[j]=max(b[j],p[j]+b[i]);
             }
         }
