@@ -22,9 +22,9 @@ int main() {
         }
         dp[i]=cost;
     }
-    for(int i=0;i<=m;i++)
-        cout<<dp[i]<<" ";
-    cout<<"\n";
+    // for(int i=0;i<=m;i++)
+    //     cout<<dp[i]<<" ";
+    // cout<<"\n";
     
     cout<<(dp[m]==1e6 ? -1 : dp[m]);
 
