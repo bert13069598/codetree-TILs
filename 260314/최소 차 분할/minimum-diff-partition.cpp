@@ -13,10 +13,11 @@ int main() {
         cin >> arr[i];
         sum+=arr[i];
     }
+    dp[0]=true;
     int groupa=sum/2;
     for(int i=0;i<n;i++){
         for(int j=groupa;j>=0;j--){
-            if(j-arr[i]>=0){
+            if(j-arr[i]>=0 && dp[j-arr[i]]){
                 dp[j]=true;
             }
         }
