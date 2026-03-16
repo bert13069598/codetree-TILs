@@ -20,9 +20,11 @@ int main() {
         return 0;
     }
     for(int i=1;i<=4;i++){
-        for(int j=i%2;j<n-1;j+=2){
-            // cout<<i<<" "<<j<<"\n";
-            dp[j+2][i]=max(dp[j][i],dp[j+1][i-1])+a[j+2];
+        for(int j=i%2+1;j<=n;j+=2){
+            if(i>=j)
+                dp[j][i]=dp[j-1][i-1]+a[j];
+            else
+                dp[j][i]=max(dp[j-2][i],dp[j-1][i-1])+a[j];
         }
     }
     // for(int i=1;i<=4;i++){
@@ -30,7 +32,10 @@ int main() {
     //         cout<<dp[j][i]<<" ";
     //     cout<<"\n";
     // }
-    cout<<dp[n][4];
+    for(int i=2;i<=4;i++)
+        answer=max(answer,dp[n][i]);
+    cout<<answer;
 
     return 0;
 }
+
