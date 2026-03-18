@@ -22,6 +22,7 @@ int main() {
         for(int j=0;j<n;j++){
             if(v[i][j]){
                 v[i+1][j+1]=true;
+                dp[i+1][j+1]=max(dp[i+1][j+1],dp[i][j]);
                 if(f[i]>s[j]){
                     v[i][j+1]=true;
                     dp[i][j+1]=max(dp[i][j+1],dp[i][j]+s[j]);
@@ -48,3 +49,4 @@ int main() {
 
     return 0;
 }
+
