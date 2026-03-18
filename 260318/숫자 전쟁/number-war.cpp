@@ -41,8 +41,8 @@ int main() {
     // }
 
     int answer=0;
-    for(int i=1;i<=n;i++)
-        for(int j=1;j<=n;j++)
+    for(int i=0;i<=n;i++)
+        for(int j=0;j<=n;j++)
             answer=max(answer,dp[i][j]);
     cout<<answer;
 
