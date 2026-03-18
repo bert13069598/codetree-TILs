@@ -15,7 +15,8 @@ int main() {
         cin >> dir[i] >> dist[i];
     }
 
-    int answer=-1,x=0,y=0;
+    int answer=0,x=0,y=0;
+    bool isorigin=false;
     for(int i=0;i<N;i++){
         while(dist[i]--){
             answer++;
@@ -32,13 +33,15 @@ int main() {
                 x+=dx[3];
                 y+=dy[3];
             }
-            if(x==0 && y==0)
+            if(x==0 && y==0){
+                isorigin=true;
                 break;
+            }
         }
-        if(x==0 && y==0)
+        if(isorigin)
             break;
     }
-    cout<<(answer>0 ? answer+1 : -1);
+    cout<<(isorigin ? answer : -1);
 
     return 0;
 }
