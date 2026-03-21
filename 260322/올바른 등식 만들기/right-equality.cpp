@@ -4,7 +4,7 @@ using namespace std;
 
 int n,m;
 int nums[100];
-int dp[41][101];
+long long dp[101][41];
 
 int main() {
     cin >> n >> m;
@@ -32,3 +32,4 @@ int main() {
 
     return 0;
 }
+
