@@ -15,16 +15,10 @@ int main() {
 
     for(int k=1;k<=n;k++){
         for(int i=1;i<=min(k,11);i++){
-            int sum=0;
-            for(int j=i;j>0;j--)
-                sum+=s[j];
-            dp[k][i][0]=max(dp[k-1][i][0],sum);
+            dp[k][i][0]=max(dp[k-1][i][0],dp[k-1][i-1][0]+s[k]);
         }
         for(int i=1;i<=min(k,9);i++){
-            int sum=0;
-            for(int j=i;j>0;j--)
-                sum+=b[j];
-            dp[k][0][i]=max(dp[k-1][0][i],sum);
+            dp[k][0][i]=max(dp[k-1][0][i],dp[k-1][0][i-1]+b[k]);
         }
         for(int i=1;i<=11;i++){
             for(int j=1;j<=9;j++){
