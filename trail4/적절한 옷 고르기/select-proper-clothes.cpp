@@ -27,17 +27,13 @@ int main() {
         for(int j=0;j<N;j++){
             if(!arr[j][i])
                 continue;
-            int maxi=0,maxv=0;
+            int maxv=0;
             for(int k=0;k<N;k++){
                 if(j!=k && arr[k][i-1]){
-                    int diff=abs(v[j]-v[k]);
-                    if(diff>maxv){
-                        maxi=k;
-                        maxv=diff;
-                    }
+                    maxv=max(maxv,dp[k][i-1]+abs(v[j]-v[k]));
                 }
             }
-            dp[j][i]=dp[maxi][i-1]+maxv;
+            dp[j][i]=maxv;
         }
     }
 
@@ -48,7 +44,8 @@ int main() {
     // }
     int answer=0;
     for(int i=0;i<N;i++)
-        answer=max(answer,dp[i][M-1]);
+        for(int j=0;j<M;j++)
+            answer=max(answer,dp[i][j]);
     cout<<answer;    
 
     return 0;
