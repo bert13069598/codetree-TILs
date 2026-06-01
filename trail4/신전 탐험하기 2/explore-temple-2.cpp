@@ -4,8 +4,7 @@ using namespace std;
 
 int n;
 int lmr[1001][3];
-int dp[1001][3];
-int fi[1001][3];
+int dp[3][1001][3];
 
 int main() {
     cin >> n;
@@ -14,31 +13,44 @@ int main() {
         cin >> lmr[i][0] >> lmr[i][1] >> lmr[i][2];
     }
 
+    for(int i=0;i<3;i++)
+        dp[0][0][i]=lmr[0][i];
     for(int i=0;i<3;i++){
-        dp[0][i]=lmr[0][i];
-        fi[0][i]=i;
-    }
-
-    for(int i=1;i<n;i++){
         for(int j=0;j<3;j++){
-            int prev=0;
+            if(i==j)
+                continue;
+            dp[j][1][i]=lmr[1][i]+dp[0][0][j];
+        }
+    }
+    for(int i=0;i<3;i++){
+        for(int j=2;j<n;j++){
             for(int k=0;k<3;k++){
-                if(j==k)
-                    continue;
-                if(i==n-1 && j==fi[i-1][k])
-                    continue;
-                if(dp[i-1][k]>prev){
-                    prev=dp[i-1][k];
-                    fi[i][j]=fi[i-1][k];
+                for(int l=0;l<3;l++){
+                    if(k==l)
+                        continue;
+                    dp[i][j][k]=max(dp[i][j][k],lmr[j][k]+dp[i][j-1][l]);
                 }
             }
-            dp[i][j]=lmr[i][j]+prev;
         }
     }
 
+    // for(int i=0;i<3;i++){
+    //     for(int j=0;j<n;j++){
+    //         for(int k=0;k<3;k++){
+    //             cout<<dp[i][j][k]<<" ";
+    //         }
+    //         cout<<"\n";
+    //     }
+    //     cout<<"\n";
+    // }
+
     int answer=0;
     for(int i=0;i<3;i++){
-        answer=max(answer,dp[n-1][i]);
+        for(int j=0;j<3;j++){
+            if(i==j)
+                continue;
+            answer=max(answer,dp[i][n-1][j]);
+        }
     }
     cout<<answer;
 
