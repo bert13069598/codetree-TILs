@@ -34,7 +34,7 @@ int main() {
     // }
 
     int answer=0;
-    for(int i=0;i<m;i++)
+    for(int i=0;i<=m;i++)
         answer=max(answer,dp[i][n]);
     cout<<answer;
     
