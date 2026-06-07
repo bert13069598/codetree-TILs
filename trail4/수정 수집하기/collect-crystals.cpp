@@ -19,7 +19,7 @@ int main() {
     for(int i=0;i<n;i++){
         for(int j=0;j<=m;j++){
             dp[j][i+1]=max(dp[j][i+1],dp[j][i]+crystal[i+1][j%2]);
-            if(j<m)
+            if(j<=i && j<m)
                 dp[j+1][i+1]=dp[j][i]+crystal[i+1][(j+1)%2];
         }
     }
