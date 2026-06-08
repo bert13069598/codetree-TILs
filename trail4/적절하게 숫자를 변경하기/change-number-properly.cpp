@@ -19,6 +19,8 @@ int main() {
                 if(i<=k)
                     continue;
                 dp[k][i][j]=max(dp[k][i][j],dp[k][i-1][j]+(a[i]==j+1));
+                if(k==m)
+                    continue;
                 for(int jj=0;jj<4;jj++){
                     if(j==jj)
                         continue;
