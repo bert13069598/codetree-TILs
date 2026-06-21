@@ -13,14 +13,20 @@ int main() {
     int n=A.size();
     int m=B.size();
 
+    bool same=false;
     for(int i=1;i<=n;i++){
         dp[i][1]=dp[i-1][1];
-        if(A[i-1]!=B[0])
+        if(!same && A[i-1]==B[0])
+            same=true;
+        else
             dp[i][1]++;
     }
+    same=false;
     for(int i=1;i<=m;i++){
         dp[1][i]=dp[1][i-1];
-        if(A[0]!=B[i-1])
+        if(!same && A[0]==B[i-1])
+            same=true;
+        else
             dp[1][i]++;
     }
 
